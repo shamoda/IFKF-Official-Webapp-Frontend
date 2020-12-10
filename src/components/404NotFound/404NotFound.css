@@ -1,0 +1,27 @@
+.head{
+    text-align: center;
+    font-weight: 900;
+    color: white;
+}
+
+.sub {
+    text-align: center;
+    font-weight: 500;
+    color: white;
+}
+
+.error {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    /* position: fixed; */
+    left: 30%;
+    right: 30%;
+    top: 30%;
+    text-align: center;
+}
+
+.error a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
