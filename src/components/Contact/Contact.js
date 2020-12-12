@@ -55,7 +55,7 @@ class Contact extends Component {
                             <Card style={{background:"transparent", paddingTop:"20px", paddingLeft:"10px", paddingRight:"10px", marginTop:"20px", border:"none"}}>
                                 <Card.Header style={{paddingBottom:"0px", fontSize:"25px", backgroundColor:"transparent", border:"none"}}>Get in Touch</Card.Header>
                                 <Card.Body style={{paddingTop:""}}>
-                                    <Form>
+                                    <Form netlify>
 
                                         <Form.Group controlId="formBasicEmail">
                                             <Form.Label>Your Name</Form.Label>
