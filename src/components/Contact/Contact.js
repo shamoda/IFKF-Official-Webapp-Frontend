@@ -8,10 +8,32 @@ import {faHandshake, faPhone, faEnvelope, faMapMarkerAlt, faUserAlt } from '@for
 class Contact extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            uname:'',
+            email:'',
+            msg:''
 
+        }
+
+        this.submitRecord = this.submitRecord.bind(this);
     }
 
+    submitRecord(event){
+        event.preventDefault();
+
+        this.setState({uname:'', email:'', msg:''})
+        this.props.history.push('/getintouch')
+    }
+
+    stateChanged = event =>{
+        this.setState({
+            [event.target.name] : event.target.value
+        });
+    };
+
     render() {
+
+        const { uname, email, msg} = this.state
 
         return (
             <Container fluid className="main-container" >
@@ -55,21 +77,21 @@ class Contact extends Component {
                             <Card style={{background:"transparent", paddingTop:"20px", paddingLeft:"10px", paddingRight:"10px", marginTop:"20px", border:"none"}}>
                                 <Card.Header style={{paddingBottom:"0px", fontSize:"25px", backgroundColor:"transparent", border:"none"}}>Get in Touch</Card.Header>
                                 <Card.Body style={{paddingTop:""}}>
-                                    <form name="contact" method="POST" data-netlify="true">
+                                    <Form netlify onSubmit={this.submitRecord}>
 
                                         <Form.Group controlId="formBasicEmail">
                                             <Form.Label>Your Name</Form.Label>
-                                            <Form.Control type="text" placeholder="Enter name" style={{backgroundColor:"transparent", color:"white"}} />
+                                            <Form.Control type="text" name="uname" value={uname} onChange={this.stateChanged} placeholder="Enter name" style={{backgroundColor:"transparent", color:"white"}} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formBasicEmail">
                                             <Form.Label>Email address</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" style={{backgroundColor:"transparent", color:"white"}} />
+                                            <Form.Control type="email" name="email" value={email} onChange={this.stateChanged} placeholder="Enter email" style={{backgroundColor:"transparent", color:"white"}} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formBasicEmail">
                                             <Form.Label>Your Message</Form.Label>
-                                            <Form.Control as="textarea" rows={4} placeholder="Enter message" style={{backgroundColor:"transparent", color:"white"}} />
+                                            <Form.Control as="textarea" name="msg" value={msg} onChange={this.stateChanged} rows={4} placeholder="Enter message" style={{backgroundColor:"transparent", color:"white"}} />
                                         </Form.Group>
 
                                         
@@ -77,7 +99,7 @@ class Contact extends Component {
                                         <Button variant="primary" type="submit">
                                             Submit
                                         </Button>
-                                    </form>
+                                    </Form>
                                 </Card.Body>
                             </Card>
 
